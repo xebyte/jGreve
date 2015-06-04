@@ -1,6 +1,6 @@
 # jGreve
 
-Genomic Recurrent Event ViEwer written in Java based on [(Cazier, Holmes and Broxholme)](http://bioinformatics.oxfordjournals.org/content/28/22/2981.long)
+Genomic Recurrent Event ViEwer written in Java based on [(Cazier, Holmes and Broxholme)](http://bioinformatics.oxfordjournals.org/content/28/22/2981.long).
 
 ## Requirements
 * [JSAP](http://www.martiansoftware.com/jsap/)
