@@ -14,6 +14,13 @@ public class Printer {
     final public static int TYPE_XLS = 1;
 
 
+    /**
+     * Returns a driver of given type
+     * @param filename
+     * @param type
+     * @return
+     * @throws Exception
+     */
     public static PrinterDriver getReader(String filename, int type) throws Exception {
         PrinterDriver p;
         switch(type) {
@@ -30,6 +37,13 @@ public class Printer {
         return p;
     }
 
+    /**
+     * Returns a write driver of given type
+     * @param filename
+     * @param type
+     * @return
+     * @throws Exception
+     */
     public static PrinterDriver getWriter(String filename, int type) throws Exception {
         PrinterDriver p;
         switch(type) {

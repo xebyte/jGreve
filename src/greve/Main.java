@@ -70,7 +70,6 @@ public class Main {
 
 	/**
 	 * Initialize all the datastructures
-	 * @return [description]
 	 */
 	public Main(String aberrations) {
 
@@ -98,7 +97,7 @@ public class Main {
 
 		cyto = new HashMap<String, ArrayList<Cytorange>>();
 
-		events = new Events(new String[]{});
+		events = new Events();
 
 		patients = new ArrayList<Patient>();
 
@@ -335,8 +334,6 @@ public class Main {
         main.close();
 
         // plot MHT
-        //
-        // DONE!!!
 	}
 
     private void setTitle(String title) {
@@ -557,8 +554,8 @@ public class Main {
 	 * Read abberations from file
 	 * @param  filename              A file with abberations
 	 * @throws FileNotFoundException If the file couldn't be found
-	 * @throws IOException           [description]
-	 * @throws Exception             [description]
+	 * @throws IOException
+	 * @throws Exception
 	 */
 	public void readAbberations(String filename) throws FileNotFoundException, IOException, Exception {
 		String[] file = filename.split("\\.");
@@ -651,6 +648,13 @@ public class Main {
 //        }
     }
 
+    /**
+     * Makes overlaps and copies them to a separate hashmap to free the original one for use of other threads
+     * @param chr
+     * @param bin
+     * @param sum
+     * @return
+     */
     synchronized HashMap<Integer, ArrayList<Overlap>> makeOverlaps(String chr, int bin, int sum) {
         HashMap<Integer, ArrayList<Overlap>> map = new HashMap<Integer, ArrayList<Overlap>>();
 
@@ -670,6 +674,14 @@ public class Main {
         return map;
     }
 
+    /**
+     * Calculates individual chromosome passed from the user, prints the output to a file and produces a graph
+     * @param chr
+     * @param bin
+     * @param sum
+     * @param indiv
+     * @throws Exception
+     */
 	public void calculateIndividual(String chr, int bin, int sum, boolean indiv) throws Exception {
 		String[] headers = new String[]{"Chromosome", "Type", "Start", "End", "Count", "Score", "GW_P", "C_P"};
 
@@ -891,6 +903,11 @@ public class Main {
 		return patients;
 	}
 
+    /**
+     * A very badly written method for patient sorting (probably can be done via simple sort() call on patients)
+     * @param patients
+     * @return
+     */
 	public ArrayList<Patient> sortAberration(ArrayList<Patient> patients) {
 		ArrayList<Patient> tempPatients = new ArrayList<Patient>();
 		HashMap<String, Integer> minrec = new HashMap<String, Integer>();
@@ -969,6 +986,15 @@ public class Main {
 		return events;
 	}
 
+    /**
+     * Routine to plot individual chromosomes
+     * @param chr
+     * @param overlapMap
+     * @param indiv
+     * @param sum
+     * @param title
+     * @param top
+     */
 	public void plotIndividuals(String chr, HashMap<Integer, ArrayList<Overlap>> overlapMap, boolean indiv, int sum, String title, int[] top) {
 		IndividualDiagram canvas = new IndividualDiagram(title, chr, 1000, 1000);
 
@@ -1053,6 +1079,12 @@ public class Main {
 		canvas.saveImage("png", OUTPUT_PATH + chr + ".png");
 	}
 
+    /**
+     * Routine for drawing summary
+     * @param indiv
+     * @param sum
+     * @param title
+     */
     private void plotSummary(boolean indiv, int sum, String title) {
         SummaryDiagram summary = new SummaryDiagram(title, 3000);
         for(int i = 0; i < Common.CHROMOSOME_LIST.length; i++) {

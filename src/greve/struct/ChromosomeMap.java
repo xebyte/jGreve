@@ -10,6 +10,11 @@ public class ChromosomeMap extends HashMap<String, ArrayList<Gene>> {
 		super();
 	}
 
+    /**
+     * Add a gene to chromosome's list
+     * @param chromosome
+     * @param gene
+     */
 	public void add(String chromosome, Gene gene) {
 		if(get(chromosome) != null) {
 			get(chromosome).add(gene);

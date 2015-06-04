@@ -15,6 +15,12 @@ public class CSV implements PrinterDriver {
 
     private int lineCount;
 
+    /**
+     * Returns a read or write object based on rw argument
+     * @param filename
+     * @param rw
+     * @throws Exception
+     */
     public CSV(String filename, int rw) throws Exception {
         file = filename;
         this.rw = rw;

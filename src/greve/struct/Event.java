@@ -41,7 +41,7 @@ public class Event {
 	/**
 	 * Initialize object
 	 * @param  type Event type
-	 * @return      [description]
+	 * @return
 	 */
 	public Event(String type) {
 		this.type = type;
@@ -137,9 +137,8 @@ public class Event {
 
 	/**
 	 * Routine to create overlaps from a list of events
-	 * @param bin                                         [description]
-	 * @param patients                                    [description]
-	 * @param HashMap<String,maxi,HashMap<String,maxi37>> [description]
+	 * @param bin
+	 * @param patients
 	 */
 	public void makeOverlap(int bin, ArrayList<Patient> patients, String chr, HashMap<String, Integer> maxi, HashMap<String, Integer> maxi37) {
 		this.bin = bin;
@@ -178,7 +177,6 @@ public class Event {
 
 	/**
 	 * Routine to add the current event to my overlap
-	 * @return [description]
 	 */
 	public void addOverlap(String chromosome, HashMap<String, Double> props, Patient patient, int bin) {
 		String sam = patient.getPatientID();

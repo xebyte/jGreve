@@ -22,6 +22,12 @@ public class XLS implements PrinterDriver {
 
     private int curRow;
 
+    /**
+     * Returns a read or write object based on rw argument
+     * @param filename
+     * @param rw
+     * @throws Exception
+     */
     public XLS(String filename, int rw) throws Exception {
         file = filename;
         this.rw = rw;
@@ -43,6 +49,10 @@ public class XLS implements PrinterDriver {
         }
     }
 
+    /**
+     * Returns next line of read file
+     * @return
+     */
     @Override
     public String[] readNextLine() {
         if(curRow >= read.getSheet(0).getRows()) {
@@ -68,6 +78,11 @@ public class XLS implements PrinterDriver {
         return line;
     }
 
+    /**
+     * Writes a line
+     * @param line
+     * @throws WriteException
+     */
     @Override
     public void write(String[] line) throws WriteException {
         for(int i = 0; i < line.length; i++) {
